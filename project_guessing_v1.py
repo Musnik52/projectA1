@@ -44,14 +44,13 @@ def game(a):    #the game
             ans = list(ans)
             for l in range(len(fans)):
                 if fans[l] == guess: ans[l] = guess
-                else: pass
             ans = "".join(ans).rstrip()
             if ans == fans: break
         else:
             print('Wrong!')
             score -= 1
             if score < 0: score = 0
-    return score, time.time()
+    return score, countdown()
 
 def final_score(totime, score, answer):
     print(f'Game over! Your prase was: "{" ".join(answer)}". Solved within {int(totime)} seconds')
@@ -60,7 +59,7 @@ def final_score(totime, score, answer):
 
 def main():
     start_message()
-    stime = time.time()
+    stime = countdown()
     answer = begin()
     score, etime = game(answer)
     final_score(etime - stime, score, answer)
